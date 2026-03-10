@@ -8,6 +8,15 @@
   <body>
     <h1>Photo Collage Booth</h1>
 
+    <label for="numPhotos">Number of Photos:</label>
+    <select id="numPhotos" class="input">
+      <option value="2">2 Photos</option>
+      <option value="3">3 Photos</option>
+      <option value="4" selected>4 Photos</option>
+      <option value="6">6 Photos</option>
+    </select>
+
+    <br /><br />
     <button onclick="takePhoto()" class="btn">Take Photos</button>
 
     <br /><br />
@@ -19,7 +28,8 @@
 
     <script>
       function takePhoto() {
-        fetch("/capture")
+        const numPhotos = document.getElementById("numPhotos").value;
+        fetch("/capture?num_photos=" + numPhotos)
           .then((response) => response.blob())
           .then((image) => {
             const url = URL.createObjectURL(image);

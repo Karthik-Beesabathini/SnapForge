@@ -2,6 +2,7 @@ import numpy as np
 import cv2
 import os
 
+
 def create_collage(photos):
 
     collage=np.hstack(((photos[0],photos[1],photos[2])))
