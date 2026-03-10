@@ -7,7 +7,12 @@
 
   <body>
     <h1>Photo Collage Booth</h1>
-
+    <h1>Photo Booth</h1>
+    <img src="{{ url_for('video_feed') }}" width="640">
+    
+    <div class="controls">
+        <a href="/capture?num_photos=4">Capture 4 Photos</a>
+    </div>
     <label for="numPhotos">Number of Photos:</label>
     <select id="numPhotos" class="input">
       <option value="2">2 Photos</option>

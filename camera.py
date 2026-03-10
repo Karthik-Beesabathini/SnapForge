@@ -1,27 +1,27 @@
 import cv2
-import time
 
-def capture_photos(num_photos):
-    cam = cv2.VideoCapture(0)
-    photos = []
+class VideoCamera:
+    def __init__(self):
+        # Open the webcam
+        self.video = cv2.VideoCapture(0)
 
-    for i in range(num_photos):
+    def __del__(self):
+        self.video.release()
 
-        for j in range(3,0,-1):
-            ret, frame = cam.read()
-            temp = frame.copy()
+    def get_frame(self):
+        success, image = self.video.read()
+        if not success:
+            return None
 
-            cv2.putText(temp,str(j),(250,250),
-                        cv2.FONT_HERSHEY_SIMPLEX,7,(255,0,0),10)
+        ret, jpeg = cv2.imencode('.jpg', image)
+        return jpeg.tobytes()
 
-            cv2.imshow("Countdown",temp)
-            cv2.waitKey(1000)
+    def capture_multiple(self, num_photos):
+        photos = []
+        for _ in range(num_photos):
 
-        ret, frame = cam.read()
-        photos.append(frame)
-        cv2.waitKey(1000)
-
-    cam.release()
-    cv2.destroyAllWindows()
-
-    return photos
+            success, frame = self.video.read()
+            if success:
+                photos.append(frame)
+            cv2.waitKey(500)
+        return photos
