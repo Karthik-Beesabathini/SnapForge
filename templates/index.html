@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Photo Booth</title>
+    <link rel="stylesheet" href="../static/style.css" />
+  </head>
+
+  <body>
+    <h1>Photo Collage Booth</h1>
+
+    <button onclick="takePhoto()" class="btn">Take Photos</button>
+
+    <br /><br />
+    <button onclick="downloadPhoto()" class="btn">Download Photo</button>
+
+    <br />
+
+    <img id="result" width="600" class="" />
+
+    <script>
+      function takePhoto() {
+        fetch("/capture")
+          .then((response) => response.blob())
+          .then((image) => {
+            const url = URL.createObjectURL(image);
+            document.getElementById("result").src = url;
+          });
+      }
+    </script>
+
+    <script>
+      function downloadPhoto() {
+        const img = document.getElementById("result").src;
+        const a = document.createElement("a");
+        a.href = img;
+        a.download = "collage.jpg";
+        a.click();
+      }
+    </script>
+  </body>
+</html>

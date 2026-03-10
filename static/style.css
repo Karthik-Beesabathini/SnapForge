@@ -1,0 +1,36 @@
+body {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+}
+h1 {
+  color: white;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: x-large;
+  text-align: center;
+}
+.btn {
+  width: 100px;
+  height: 100px;
+  border: none;
+  border-radius: 20px;
+  background-color: white;
+  color: black;
+  transition: all 0.5s ease;
+  margin: 20px 20px 20px 20px;
+}
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px white;
+}
+.btn:hover::before {
+  opacity: 1;
+  transform: rotate(-45deg) translateY(100%);
+}
+.downloadbtn {
+  border: none;
+  border-radius: 20px;
+  background-color: black;
+  color: white;
+}
