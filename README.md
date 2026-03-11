@@ -45,23 +45,11 @@ Then open [http://localhost:5000](http://localhost:5000) in your browser.
 
 ---
 
-## Generating `requirements.txt`
-
-If you don't have a `requirements.txt` yet, run this in your project folder with your virtual environment active:
-
-```bash
-pip freeze > requirements.txt
-```
-
-This captures all installed packages and their versions. Commit this file to the repo so others can replicate your environment exactly.
-
----
-
 ## Static Web Version
 
 A fully client-side version of SnapForge is available — built with HTML, CSS, and JavaScript only, using the browser's Web Camera API. No Python or server required.
 
-🔗 **[Live demo →](#)** https://snapforge-js.vercel.app/
+🔗 **[Live demo →](https://snapforge-js.vercel.app/)**
 
 ---
 
